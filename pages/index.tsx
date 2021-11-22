@@ -12,6 +12,7 @@ export default function Home() {
       <head>
         <title>Hello World - Aleph.js</title>
         <link rel="stylesheet" href="../style/index.css" />
+        <link rel="icon" href="logo.svg" type="image/icon type"></link>
       </head>
       <p className="logo"><Logo /></p>
       <h1>Welcome to use <strong>Aleph.js</strong>!</h1>
