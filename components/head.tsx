@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 export default function Head({ size = 75 }: { size?: number }) {
   return (
     <head>
-        <title>Hello World - Aleph.js</title>
-        <link rel="stylesheet" href="../style/index.css" />
-        <link rel="icon" href="logo.svg" type="image/icon type"></link>
+      <title>Hello World - Aleph.js</title>
+      <link rel="stylesheet" href="../style/base.css" />
+      <link rel="icon" href="logo.svg" type="image/icon type"></link>
     </head>
-  )
+  );
 }
