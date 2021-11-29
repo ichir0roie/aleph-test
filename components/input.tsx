@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { saveText } from "~/lib/dataAdmin.ts";
+
 export default function Input({ size = 75 }: { size?: number }) {
   const [date, setDate] = useState(new Date().toISOString().substr(0, 10));
   const [text1, setText1] = useState("");
@@ -15,25 +17,12 @@ export default function Input({ size = 75 }: { size?: number }) {
   //     .catch((e) => console.error(e));
   // }
 
-  function sendTest() {
-    fetch("/api/saveDaily/save", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: text2,
-    });
+  function sendText() {
+    saveText(text1 + ".txt", text2);
   }
 
   function addTextAndSend(text: string, setText: Function) {
     setText(text);
-    fetch("/api/saveDaily/save", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: text,
-    });
   }
 
   return (
@@ -57,7 +46,7 @@ export default function Input({ size = 75 }: { size?: number }) {
       >
       </textarea>
 
-      <button onClick={sendTest}>保存</button>
+      <button onClick={sendText}>保存</button>
     </div>
   );
 }
