@@ -35,3 +35,11 @@ textarea {
 
   display: block;
 }
+
+button {
+  width: 100px;
+  display: block;
+  margin: 1%;
+  margin-right: 10%;
+  margin-left: auto;
+}

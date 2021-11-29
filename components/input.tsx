@@ -1,13 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default function input({ size = 75 }: { size?: number }) {
-  var date = new Date().toISOString().substr(0, 10);
-  var text = "";
+export default function Input({ size = 75 }: { size?: number }) {
+  const [date, setDate] = useState(new Date().toISOString().substr(0, 10));
+  const [text1, setText1] = useState("");
+  const [text2, setText2] = useState("");
+
+  // function getTestResp() {
+  //   fetch("/api/saveDaily/test")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setText1(data);
+  //       console.log(data);
+  //     })
+  //     .catch((e) => console.error(e));
+  // }
+
+  function sendTest() {
+    fetch("/api/saveDaily/save", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: text2,
+    });
+  }
+
+  function addTextAndSend(text: string, setText: Function) {
+    setText(text);
+    fetch("/api/saveDaily/save", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: text,
+    });
+  }
+
   return (
     <div className="daily frame">
-      <input type="date" value={date}></input>
-      <input className="item" value={text}></input>
-      <textarea className="item"></textarea>
+      <input
+        type="date"
+        value={date}
+        onChange={(e) => setDate(e.target.value)}
+      >
+      </input>
+      <input
+        className="item"
+        value={text1}
+        onChange={(e) => addTextAndSend(e.target.value, setText1)}
+      >
+      </input>
+      <textarea
+        className="item"
+        value={text2}
+        onChange={(e) => setText2(e.target.value)}
+      >
+      </textarea>
+
+      <button onClick={sendTest}>保存</button>
     </div>
   );
 }
