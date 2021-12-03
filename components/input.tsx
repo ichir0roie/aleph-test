@@ -8,7 +8,7 @@ export default function Input({ size = 75 }: { size?: number }) {
   const [text2, setText2] = useState("");
 
   // function getTestResp() {
-  //   fetch("/api/saveDaily/test")
+  //   fetch("/api/dataAdmin/test")
   //     .then((res) => res.json())
   //     .then((data) => {
   //       setText1(data);

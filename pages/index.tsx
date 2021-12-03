@@ -2,6 +2,7 @@ import { useDeno } from "aleph/react";
 import React from "react";
 import Head from "~/components/head.tsx";
 import Input from "~/components/input.tsx";
+import View from "~/components/view.tsx";
 import useCounter from "~/lib/useCounter.ts";
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
     <div className="page">
       <Head />
       <Input />
+      <View />
     </div>
   );
 }

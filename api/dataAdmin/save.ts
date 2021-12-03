@@ -6,9 +6,9 @@ export const handler: APIHandler = async ({ response, request, data }) => {
   console.log(jsonData);
 
   const filePath: string = "data/" + jsonData.filePath;
-  const textData: string = jsonData.textData;
+  const textData: string = jsonData.textData + "\r\n";
 
   ensureFileSync(filePath);
 
-  await Deno.writeTextFile(filePath, textData);
+  await Deno.writeTextFile(filePath, textData, { append: true });
 };
